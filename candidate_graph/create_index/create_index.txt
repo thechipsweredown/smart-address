@@ -1,0 +1,20 @@
+PUT smart_address
+{
+    "mappings" : {
+        "doc" : {
+            "properties" : {
+                "project" : { "type" : "text" },
+                "street" : { "type" : "text" },
+                "ward" : { "type" : "text" },
+                "district" : { "type" : "text" },
+                "city" : { "type" : "text" },
+                "country" : { "type" : "text" },
+                "code" : { "type" : "text" },
+                "lat" : { "type" : "double" },
+                "lng" : { "type" : "double" }
+            }
+        }
+    }
+}
+ curl -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/smart_address/doc/_bulk?pretty' --data-binary @data.json
+
