@@ -2,6 +2,7 @@ var fs = require('fs')
 module.exports.extract = function (arr_address){
     for(var i = 0; i < arr_address.length;i++){
          var name_city = arr_address[i]["name"] //city
+         if(arr_address[i]["code"] == "HN") name_city = "Hà Nội"
          var city = arr_address[i]
              var district = city["district"] //district
              for(var k = 0; k < district.length; k++){
