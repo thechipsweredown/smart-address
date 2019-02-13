@@ -106,7 +106,7 @@ labels.remove('O')
 
 trainer = pycrfsuite.Trainer(verbose=True)
 
-# Submit training data to the trainer
+# Submit training pre_data to the trainer
 for xseq, yseq in zip(X_train, y_train):
     trainer.append(xseq, yseq)
 
