@@ -1,5 +1,4 @@
 import pycrfsuite
-from pyvi import ViTokenizer, ViPosTagger
 
 def word2features(sent, i):
     word = sent[i][0]
