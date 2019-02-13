@@ -17,3 +17,4 @@ PUT smart_address
     }
 }
  curl -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/smart_address/doc/_bulk?pretty' --data-binary @data.json
+

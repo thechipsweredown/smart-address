@@ -1,4 +1,4 @@
-with open('../pre_data/pre-data.json') as f:
+with open('../pre_data/pre_data.json') as f:
     count = 0
     with open('../data_elasticsearch/data.json',mode='w') as f1:
         for line in f:
