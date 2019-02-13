@@ -102,7 +102,7 @@ crf = sklearn_crfsuite.CRF(
 crf.fit(X_train, y_train)
 
 labels = list(crf.classes_)
-labels.remove('O')
+labels.remove('OTHER')
 
 trainer = pycrfsuite.Trainer(verbose=True)
 

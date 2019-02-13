@@ -45,31 +45,37 @@ def sent2labels(sent):
 def sent2tokens(sent):
     return [token for token, postag, label in sent]
 
-def detect_entity(question):
-    text = ViPosTagger.postagging(ViTokenizer.tokenize(question))
+def detect_entity(address):
+    temp = []
+    for i in address.split(" "):
+        if "," not in i:
+            temp.append(i)
+        else :
+            temp.append(i.replace(",",""))
+            temp.append(",")
     detect = []
-    ar = []
-    for i in range(len(text[0])):
+    for j in temp:
         l = []
-        l.append(text[0][i])
-        l.append(text[1][i])
-        ar.append(tuple(l))
-    detect.append(ar)
-    X_detect = [sent2features(s) for s in detect]
+        l.append(j)
+        l.append("O")
+        detect.append(tuple(l))
+    arr = []
+    arr.append(detect)
+    X_detect = [sent2features(s) for s in arr]
     tagger = pycrfsuite.Tagger()
     tagger.open('model/crf.model')
     y_detect = [tagger.tag(xseq) for xseq in X_detect]
+    print(y_detect)
     pred = []
-    for i in range(len(detect[0])):
-        k = detect[0][i][0]
-        k = k.replace("_", " ")
+    for i in range(len(temp)):
+        k = temp[i]
         v = y_detect[0][i]
         kv = []
         kv.append(k)
         kv.append(v)
         pred.append(tuple(kv))
     return pred
-address = "Tây Hồ"
+address = "Đại Cồ Việt, Hai Bà Trưng, Hà Nội"
 entity = detect_entity(address)
 
 print(entity)
