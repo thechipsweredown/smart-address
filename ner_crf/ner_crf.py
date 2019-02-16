@@ -79,3 +79,4 @@ address = "Đại Cồ Việt, Hai Bà Trưng, Hà Nội"
 entity = detect_entity(address)
 
 print(entity)
+print("Hà Nội" == "Hà Nội")
