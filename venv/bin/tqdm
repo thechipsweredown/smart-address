@@ -1,5 +1,4 @@
-#!/home/tungdd/PycharmProjects/SmartAddress/venv/bin/python
-
+#!/home/tungdd/Desktop/smart-address/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
