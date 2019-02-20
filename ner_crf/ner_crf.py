@@ -43,6 +43,30 @@ def sent2labels(sent):
 
 def sent2tokens(sent):
     return [token for token, postag, label in sent]
+def get_map_entity(pred):
+    number = []
+    street = []
+    ward = []
+    dist = []
+    city = []
+    for i in range(len(pred)):
+        if pred[i][1].endswith("NUMBER"):
+            number.append(pred[i][0].lower())
+        if pred[i][1].endswith("STREET"):
+            street.append(pred[i][0].lower())
+        if pred[i][1].endswith("WARD"):
+            ward.append(pred[i][0].lower())
+        if pred[i][1].endswith("DIST"):
+            dist.append(pred[i][0].lower())
+        if pred[i][1].endswith("CITY"):
+            city.append(pred[i][0].lower())
+    map = {}
+    map["number"] = " ".join(number)
+    map["street"] = " ".join(street)
+    map["ward"] = " ".join(ward)
+    map["dist"] = " ".join(dist)
+    map["city"] = " ".join(city)
+    return map
 
 def detect_entity(address):
     temp = []
@@ -62,9 +86,8 @@ def detect_entity(address):
     arr.append(detect)
     X_detect = [sent2features(s) for s in arr]
     tagger = pycrfsuite.Tagger()
-    tagger.open('model/crf.model')
+    tagger.open('../../ner_crf/model/crf.model')
     y_detect = [tagger.tag(xseq) for xseq in X_detect]
-    print(y_detect)
     pred = []
     for i in range(len(temp)):
         k = temp[i]
@@ -73,9 +96,5 @@ def detect_entity(address):
         kv.append(k)
         kv.append(v)
         pred.append(tuple(kv))
-    return pred
-address = "Đại Cồ Việt, Hai Bà Trưng, Hà Nội"
-entity = detect_entity(address)
+    return get_map_entity(pred)
 
-print(entity)
-print("Hà Nội" == "Hà Nội")
