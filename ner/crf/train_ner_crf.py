@@ -130,18 +130,21 @@ trainer.train('model/crf.model')
 tagger = pycrfsuite.Tagger()
 tagger.open('model/crf.model')
 
-#Accurancy
-Y_pred = crf.predict(X_test)
-print(metrics.flat_f1_score(Y_test, Y_pred,
-                      average='weighted', labels=labels))
-
 #Tag
 Y_pred = crf.predict(X_test)
-sorted_labels = sorted(
-    labels,
-    key=lambda name: (name[1:], name[0])
-)
-print(metrics.flat_classification_report(
-    Y_test, Y_pred, labels=sorted_labels, digits=3
-))
+from seqeval.metrics import precision_score, recall_score, f1_score, classification_report
+print("F1-score: {:.1%}".format(f1_score(Y_test, Y_pred)))
+print(classification_report(Y_test, Y_pred))
+
+# #Accurancy
+# Y_pred = crf.predict(X_test)
+# print(metrics.flat_f1_score(Y_test, Y_pred,
+#                       average='weighted', labels=labels))
+# sorted_labels = sorted(
+#     labels,
+#     key=lambda name: (name[1:], name[0])
+# )
+# print(metrics.flat_classification_report(
+#     Y_test, Y_pred, labels=sorted_labels, digits=3
+# ))
 

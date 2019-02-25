@@ -86,7 +86,7 @@ def detect_entity(address):
     arr.append(detect)
     X_detect = [sent2features(s) for s in arr]
     tagger = pycrfsuite.Tagger()
-    tagger.open('../../crf/model/crf.model')
+    tagger.open('model/crf.model')
     y_detect = [tagger.tag(xseq) for xseq in X_detect]
     pred = []
     for i in range(len(temp)):
@@ -98,3 +98,4 @@ def detect_entity(address):
         pred.append(tuple(kv))
     return get_map_entity(pred)
 
+print(detect_entity("đại cồ việt, hai bà trưng, hà nội"))
