@@ -7,9 +7,6 @@ fields = ["project", "street", "ward", "district", "city"]
 map_level = {"project" : 0, "street" : 1, "ward" : 2, "district" : 3, "city" : 4, "country" : 5}
 graph = {}
 
-for i in range(len(fields)):
-    map_level[fields[i]] = i
-
 def create_node_id(field,value):
     str_type = str(map_level[field])
     return value +"|"+str(str_type)
@@ -20,12 +17,12 @@ def check_parent(node):
     else:
         return True
 
-def get_field_parent(field_child):
-    if field_child == "street" or field_child == "ward" or field_child == "project" or field_child == 0 or field_child == 1 or field_child ==2:
+def get_field_parent(level_child):
+    if  level_child == 0 or level_child == 1 or level_child ==2:
         return "district"
-    if field_child == "district" or field_child == 3:
+    if level_child == "district" or level_child == 3:
         return "city"
-    if field_child == "city" or field_child == 4:
+    if level_child == "city" or level_child == 4:
         return "country"
     else:
         return ""
