@@ -1,4 +1,4 @@
-from candidate_graph.build_graph import query
+from sagel.candidate_graph import query
 def get_candidate(addr,field):
     map_results = {}
     q = query.buildQuery(addr,field)

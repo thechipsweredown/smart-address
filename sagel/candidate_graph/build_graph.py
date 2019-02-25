@@ -1,6 +1,6 @@
-from candidate_graph.build_graph import get_candidate
-from candidate_graph.build_graph.type_enum import Type
-from candidate_graph.build_graph.node import Node
+from sagel.candidate_graph import get_candidate
+from sagel.candidate_graph.type_enum import Type
+from sagel.candidate_graph.node import Node
 
 addr = "Đại Cồ Việt, Hai Bà Trưng, Hà Nội"
 fields = ["project", "street", "ward", "district", "city"]
