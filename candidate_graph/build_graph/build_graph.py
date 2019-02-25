@@ -1,7 +1,6 @@
 from candidate_graph.build_graph import get_candidate
 from candidate_graph.build_graph.type_enum import Type
 from candidate_graph.build_graph.node import Node
-import hashlib
 
 addr = "Đại Cồ Việt, Hai Bà Trưng, Hà Nội"
 fields = ["project", "street", "ward", "district", "city"]
