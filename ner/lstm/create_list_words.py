@@ -5,10 +5,7 @@ data = data.fillna(method="ffill")
 words = list(set(data["Word"].values))
 words.append("ENDPAD")
 tags = list(set(data["Tag"].values))
-# with open('data/words', 'wb') as f:
-#     pickle.dump(words, f)
-# with open('data/tags', 'wb') as f:
-#     pickle.dump(tags, f)
-with open('data/words', 'rb') as f:
-    words = pickle.load(f)
-    print(words)
+with open('data/words', 'wb') as f:
+    pickle.dump(words, f)
+with open('data/tags', 'wb') as f:
+    pickle.dump(tags, f)
